@@ -56,7 +56,7 @@ const Navbar = () => {
           <li>
             <a
               href="#"
-              className="hover:text-text-pink-400 transition-colors duration-300"
+              className="hover:text-pink-400 transition-colors duration-300"
             >
               About Us
             </a>
