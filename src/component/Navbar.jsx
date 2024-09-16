@@ -40,7 +40,7 @@ const Navbar = () => {
           <li>
             <a
               href="#"
-              className="hover:text-purple-300 transition-colors duration-300"
+              className="hover:text-pink-400 transition-colors duration-300"
             >
               Home
             </a>
@@ -48,7 +48,7 @@ const Navbar = () => {
           <li>
             <a
               href="#"
-              className="hover:text-purple-300 transition-colors duration-300"
+              className="hover:text-pink-400 transition-colors duration-300"
             >
               Loans
             </a>
@@ -56,7 +56,7 @@ const Navbar = () => {
           <li>
             <a
               href="#"
-              className="hover:text-purple-300 transition-colors duration-300"
+              className="hover:text-text-pink-400 transition-colors duration-300"
             >
               About Us
             </a>
@@ -64,7 +64,7 @@ const Navbar = () => {
           <li>
             <a
               href="#"
-              className="hover:text-purple-300 transition-colors duration-300"
+              className="hover:text-pink-400 transition-colors duration-300"
             >
               Apply
             </a>
@@ -72,7 +72,7 @@ const Navbar = () => {
           <li>
             <a
               href="#"
-              className="hover:text-purple-300 transition-colors duration-300"
+              className="hover:text-pink-400 transition-colors duration-300"
             >
               Contact Us
             </a>
