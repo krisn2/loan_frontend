@@ -29,15 +29,18 @@ const Navbar = () => {
 
       {/* Links */}
       <div
-        className={`${
+         className={`${
           isOpen ? "flex" : "hidden"
-        } lg:flex flex-col lg:flex-row text-white m-8 items-center justify-center gap-4 text-xl lg:text-2xl absolute lg:static right-5 top-20 lg:top-0 lg:bg-transparent bg-black lg:w-auto w-full lg:h-auto h-[50vh] transition-all duration-500`}
+        } lg:flex flex-col lg:flex-row text-white m-8 items-center
+         justify-center gap-4 text-xl lg:text-2xl absolute lg:static left-0 
+         top-20 lg:top-0 lg:bg-transparent backdrop-blur-md bg-white/30 rounded-3xl 
+         lg:w-auto w-[90%] lg:h-auto h-[80vh] transition-all duration-500`}
       >
-        <ul className="flex flex-col lg:flex-row gap-4">
+        <ul className="flex flex-col lg:flex-row gap-4 text-3xl">
           <li>
             <a
               href="#"
-              className="hover:text-cyan-300 transition-colors duration-300"
+              className="hover:text-purple-300 transition-colors duration-300"
             >
               Home
             </a>
@@ -45,7 +48,7 @@ const Navbar = () => {
           <li>
             <a
               href="#"
-              className="hover:text-cyan-300 transition-colors duration-300"
+              className="hover:text-purple-300 transition-colors duration-300"
             >
               Loans
             </a>
@@ -53,7 +56,7 @@ const Navbar = () => {
           <li>
             <a
               href="#"
-              className="hover:text-cyan-300 transition-colors duration-300"
+              className="hover:text-purple-300 transition-colors duration-300"
             >
               About Us
             </a>
@@ -61,7 +64,7 @@ const Navbar = () => {
           <li>
             <a
               href="#"
-              className="hover:text-cyan-300 transition-colors duration-300"
+              className="hover:text-purple-300 transition-colors duration-300"
             >
               Apply
             </a>
@@ -69,7 +72,7 @@ const Navbar = () => {
           <li>
             <a
               href="#"
-              className="hover:text-cyan-300 transition-colors duration-300"
+              className="hover:text-purple-300 transition-colors duration-300"
             >
               Contact Us
             </a>
