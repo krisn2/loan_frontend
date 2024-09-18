@@ -5,6 +5,7 @@ import Hero from "./component/Hero";
 import Contact from "./component/contect";
 import Loans from "./component/loans";
 import Apply from "./component/Apply";
+import Footer from "./component/footer";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="/apply" element={<Apply />}></Route>
           {/* Add more routes as needed */}
         </Routes>
+        <Footer />
         </div>
 
     </Router>

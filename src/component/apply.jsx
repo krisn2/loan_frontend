@@ -2,7 +2,7 @@ import React from "react";
 
 const apply = () => {
   return (
-    <div className="">
+    <div className=" mb-10">
       <div className="text-center font-sans font-bold text-3xl m-20 text-violet-400">
         <h1>APPLY</h1>
       </div>
