@@ -1,59 +1,41 @@
-import { LOANS } from "../constant";
-import { motion } from "framer-motion";
+import React from 'react'
+import { motion } from 'framer-motion'
+import bg from "../assets/bg.jpeg";
+import { GiReceiveMoney , GiTakeMyMoney } from "react-icons/gi";
+import { IoCalendarSharp } from "react-icons/io5";
 
-const Project = () => {
+const Hero = () => {
   return (
-    <div className="border-b border-neutral-900 pb-4">
-      <motion.h1
+    <div>
+        <motion.h1
         whileInView={{ opacity: 1, y: 0 }}
         initial={{ opacity: 0, y: -100 }}
         transition={{ duration: 0.5 }}
-        className="my-20 text-center text-4xl text-violet-400"
+        className="my-20 text-center text-5xl text-violet-400"
       >
-        Welcome to Ofin Finance
+        Welcome To Ofin Finance
       </motion.h1>
-      <div>
-        {LOANS.map((loan, index) => (
-          <a
-            key={index}
-            href={loan.url} // Project URL added here
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mb-8 flex flex-wrap lg:justify-center"
-          >
-            <motion.div
-              whileInView={{ opacity: 1, x: 0 }}
-              initial={{ opacity: 0, x: -100 }}
-              transition={{ duration: 1 }}
-              className="w-full lg:w-1/4 flex justify-center lg:justify-start"
-            >
-              <img
-                src={loan.logo}
-                width={225}
-                height={200}
-                alt={loan.title}
-                className="mb-6 rounded"
-              />
-            </motion.div>
-            <motion.div
-              whileInView={{ opacity: 1, x: 0 }}
-              initial={{ opacity: 0, x: 100 }}
-              transition={{ duration: 1 }}
-              className="w-full max-w-xl lg:w-3/4"
-            >
-              <h6 className="mb-2 font-semibold text-center lg:text-left">
-                {loan.title}
-              </h6>
-              <p className="mb-4 text-neutral-400 text-center lg:text-left">
-                {loan.description}
-              </p>
-              
-            </motion.div>
-          </a>
-        ))}
+      <h3 className="text-center text-3xl text-amber-100 font-bold font-sans mb-10 ml-10 mr-20 ">A credit score below 600, coupled with a history of late or missed payments on previous loans or credit cards, settlements, or write-offs, will likely result in loan applications being denied.</h3>
+      <div className="flex justify-center rounded-lg mb-10 ">
+        <img src={bg} alt=""  width={"80%"} height={"30%"} />
+      </div>
+      <div className=" mt-5 mb-10 ">
+        <p className="text-center text-3xl text-white ">Our Mission Is To Help People <br />Achieve Financial Freedom.</p>
+      </div>
+      <div className="flex justify-center">
+       <GiReceiveMoney size={50}  color='yellow'/>
+        <p className=' m-5 text-center text-white'>Rate Us Low as <h6>From 0.70%</h6></p>
+      </div>
+      <div className="flex justify-center">
+       <GiTakeMyMoney size={50}  color='yellow'/>
+        <p className=' m-5 text-center text-white'>MAXIMUM LOAN <h6>1K to 200 Cr</h6></p>
+      </div>
+      <div className="flex justify-center">
+       <IoCalendarSharp size={50}  color='yellow'/>
+        <p className=' m-5 text-center text-white'>FAST SAFE & EASY PROCESS <h6>1 to 7 Days</h6></p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Project;
+export default Hero

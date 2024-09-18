@@ -60,9 +60,9 @@ const Navbar = () => {
             >
               <Link
                 to="/"
-                className="hover:text-pink-400 transition-colors duration-300"
+                className="hover:text-stone-700 transition-colors duration-300"
               >
-                Home
+                HOME
               </Link>
             </motion.div>
           </li>
@@ -74,9 +74,9 @@ const Navbar = () => {
             >
               <Link
                 to="/loans"
-                className="hover:text-pink-400 transition-colors duration-300"
+                className="hover:text-stone-700 transition-colors duration-300"
               >
-                Loans
+                LOANS
               </Link>
             </motion.div>
           </li>
@@ -88,9 +88,9 @@ const Navbar = () => {
             >
               <Link
                 to="/about"
-                className="hover:text-pink-400 transition-colors duration-300"
+                className="hover:text-stone-700 transition-colors duration-300"
               >
-                About Us
+                ABOUT
               </Link>
             </motion.div>
           </li>
@@ -102,9 +102,9 @@ const Navbar = () => {
             >
               <Link
                 to="/apply"
-                className="hover:text-pink-400 transition-colors duration-300"
+                className="hover:text-stone-700 transition-colors duration-300"
               >
-                Apply
+                APPLY
               </Link>
             </motion.div>
           </li>
@@ -116,9 +116,9 @@ const Navbar = () => {
             >
               <Link
                 to="/contact"
-                className="hover:text-pink-400 transition-colors duration-300"
+                className="hover:text-stone-700 transition-colors duration-300"
               >
-                Contact Us
+                CONTACT
               </Link>
             </motion.div>
           </li>
