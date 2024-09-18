@@ -6,10 +6,7 @@ const apply = () => {
       <div className="text-center font-sans font-bold text-3xl m-20 text-violet-400">
         <h1>APPLY</h1>
       </div>
-      <h2 className="text-3xl text-amber-100 text-center w-full h-10 bg-slate-500 backdrop-blur-md">
-        Apply Form
-      </h2>
-      <div className=" mt-5 mb-5 flex justify-center">
+      <div className="flex justify-center">
         <form class="max-w-md mx-auto">
           <div class="relative z-0 w-full mb-5 group">
             <input
@@ -29,34 +26,50 @@ const apply = () => {
           </div>
           <div class="relative z-0 w-full mb-5 group">
             <input
-              type="password"
-              name="floating_password"
-              id="floating_password"
+              type="text"
+              name="floating_amount"
+              id="floating_amount"
               class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
             />
             <label
-              for="floating_password"
-              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              for="floating_amount"
+              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
-              Password
+              Loan Amount
             </label>
           </div>
           <div class="relative z-0 w-full mb-5 group">
             <input
-              type="password"
-              name="repeat_password"
-              id="floating_repeat_password"
+              type="text"
+              name="floating_address"
+              id="floating_address"
               class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
             />
             <label
-              for="floating_repeat_password"
+              for="floating_address"
               class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
-              Confirm password
+              Address
+            </label>
+          </div>
+          <div class="relative z-0 w-full mb-5 group">
+            <input
+              type="textarea"
+              name="floating_income"
+              id="floating_income"
+              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=" "
+              required
+            />
+            <label
+              for="floating_income"
+              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Monthly Income
             </label>
           </div>
           <div class="grid md:grid-cols-2 md:gap-6">
@@ -108,25 +121,84 @@ const apply = () => {
                 for="floating_phone"
                 class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >
-                Phone number (123-456-7890)
+                Phone number 
               </label>
             </div>
             <div class="relative z-0 w-full mb-5 group">
               <input
-                type="text"
-                name="floating_company"
-                id="floating_company"
+                type="tel"
+                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                name="floating_whatsapp"
+                id="floating_whatsapp"
                 class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 required
               />
               <label
-                for="floating_company"
+                for="floating_whatsapp"
                 class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >
-                Company (Ex. Google)
+                Whatsapp number 
               </label>
             </div>
+          </div>
+          <div class="relative z-0 w-full mb-5 group">
+            <select name="floating_marital" id=""
+            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            >
+              <option value="" className="text-gray-900">Choose Marital Status</option>
+              <option value="single" className="text-gray-900">Single</option>
+              <option value="married" className="text-gray-900">Married</option>
+              <option value="divorced" className="text-gray-900">Divorced</option>
+              <option value="widow" className="text-gray-900">Widow</option>
+              <option value="widower" className="text-gray-900">Widower</option>
+              <option value="separated" className="text-gray-900">Separated</option>
+            </select>
+            <label
+              for="floating_marital"
+              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Marital Status
+            </label>
+          </div>
+          <div class="relative z-0 w-full mb-5 group">
+            <select name="floating_gender" id=""
+            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            >
+              <option value="" className="text-gray-900">Choose Gender</option>
+              <option value="male" className="text-gray-900">Male</option>
+              <option value="female" className="text-gray-900">Female</option>
+              <option value="other" className="text-gray-900">Other</option>
+            </select>
+            <label
+              for="floating_email"
+              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Gender
+            </label>
+          </div>
+          <div class="relative z-0 w-full mb-5 group">
+            <select name="floating_purpose" id=""
+            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            >
+              <option value="" className="text-gray-900">Choose Loan Purpose</option>
+              <option value="education" className="text-gray-900">Education</option>
+              <option value="home" className="text-gray-900">Home</option>
+              <option value="personal" className="text-gray-900">Personal</option>
+              <option value="business" className="text-gray-900">Business</option>
+              <option value="other" className="text-gray-900">Gold</option>
+              <option value="other" className="text-gray-900">Car</option>
+              <option value="other" className="text-gray-900">LRD</option>
+              <option value="other" className="text-gray-900">Machiniry</option>
+              <option value="other" className="text-gray-900">Equipement</option>
+              <option value="other" className="text-gray-900">Other</option>
+            </select>
+            <label
+              for="floating_purpose"
+              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Loan Purpose
+            </label>
           </div>
           <button
             type="submit"

@@ -60,7 +60,7 @@ export const LOANS = [
 ]
 
 export const CONTACT ={
-    phoneNo:"1234567890",
-    email:"xJ4y0@example.com",
-    address:"123 Main St, Anytown USA 12345"
+    phoneNo:"+91 9921801047",
+    email:"ofinfinancial.in@gmail.com",
+    address:"Old Mondha, Chh. Shambhaji Nagar, Maharastra, India 431001"
 }

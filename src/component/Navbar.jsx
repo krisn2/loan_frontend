@@ -84,20 +84,6 @@ const Navbar = () => {
             <motion.div
               whileInView={{ opacity: 1, y: 0 }}
               initial={{ opacity: 0, y: -100 }}
-              transition={{ duration: 2 }}
-            >
-              <Link
-                to="/about"
-                className="hover:text-stone-700 transition-colors duration-300"
-              >
-                ABOUT
-              </Link>
-            </motion.div>
-          </li>
-          <li>
-            <motion.div
-              whileInView={{ opacity: 1, y: 0 }}
-              initial={{ opacity: 0, y: -100 }}
               transition={{ duration: 2.5 }}
             >
               <Link
