@@ -3,7 +3,7 @@ import { CONTACT } from '../constant'
 
 const Contact = () => {
   return (
-    <div className="border-b border-neutral-900 pb-200 mb-20">
+    <div className="border-b border-neutral-900 mb-40 pb-12">
         <motion.h1
         whileInView={{opacity: 1, y: 0}}
         initial={{opacity: 0, y: -100}}
