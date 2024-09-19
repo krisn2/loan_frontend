@@ -1,6 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 
 const apply = () => {
+  const [formData, setFormData] = useState({
+    email: "",
+    loanAmount: "",
+    address: "",
+    income: "",
+    firstName: "",
+    lastName: "",
+    phone: "",
+    whatsapp: "",
+    maritalStatus: "",
+    gender: "",
+    loanPurpose: "",
+  });
+
+  // Handle input changes
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  // Handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    fetch("http://localhost:5000/apply", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data.message);
+        alert("Application submitted successfully!");
+      })
+      .catch((error) => {
+        console.error("Error submitting form:", error);
+      });
+  };
+
   return (
     <div className=" mb-10">
       <div className="text-center font-sans font-bold text-3xl m-20 text-violet-400">
@@ -11,8 +55,9 @@ const apply = () => {
           <div class="relative z-0 w-full mb-5 group">
             <input
               type="email"
-              name="floating_email"
-              id="floating_email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
               class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
@@ -27,8 +72,9 @@ const apply = () => {
           <div class="relative z-0 w-full mb-5 group">
             <input
               type="text"
-              name="floating_amount"
-              id="floating_amount"
+              name="loanAmount"
+              value={formData.loanAmount}
+              onChange={handleInputChange}
               class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
@@ -43,8 +89,9 @@ const apply = () => {
           <div class="relative z-0 w-full mb-5 group">
             <input
               type="text"
-              name="floating_address"
-              id="floating_address"
+              name="address"
+              value={formData.address}
+              onChange={handleInputChange}
               class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
@@ -59,8 +106,9 @@ const apply = () => {
           <div class="relative z-0 w-full mb-5 group">
             <input
               type="textarea"
-              name="floating_income"
-              id="floating_income"
+              name="income"
+              value={formData.income}
+              onChange={handleInputChange}
               class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
@@ -76,8 +124,9 @@ const apply = () => {
             <div class="relative z-0 w-full mb-5 group">
               <input
                 type="text"
-                name="floating_first_name"
-                id="floating_first_name"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleInputChange}
                 class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 required
@@ -92,8 +141,9 @@ const apply = () => {
             <div class="relative z-0 w-full mb-5 group">
               <input
                 type="text"
-                name="floating_last_name"
-                id="floating_last_name"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleInputChange}
                 class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 required
@@ -110,9 +160,10 @@ const apply = () => {
             <div class="relative z-0 w-full mb-5 group">
               <input
                 type="tel"
+                name="phone"
                 pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                name="floating_phone"
-                id="floating_phone"
+                value={formData.phone}
+                onChange={handleInputChange}
                 class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 required
@@ -127,9 +178,10 @@ const apply = () => {
             <div class="relative z-0 w-full mb-5 group">
               <input
                 type="tel"
+                name="whatsapp"
                 pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                name="floating_whatsapp"
-                id="floating_whatsapp"
+                value={formData.whatsapp}
+              onChange={handleInputChange}
                 class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 required
@@ -143,7 +195,9 @@ const apply = () => {
             </div>
           </div>
           <div class="relative z-0 w-full mb-5 group">
-            <select name="floating_marital" id=""
+            <select   name="maritalStatus"
+              value={formData.maritalStatus}
+              onChange={handleInputChange}
             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             >
               <option value="" className="text-gray-900">Choose Marital Status</option>
@@ -155,20 +209,22 @@ const apply = () => {
               <option value="separated" className="text-gray-900">Separated</option>
             </select>
             <label
-              for="floating_marital"
+              for="MaritalStatus"
               class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
               Marital Status
             </label>
           </div>
           <div class="relative z-0 w-full mb-5 group">
-            <select name="floating_gender" id=""
+            <select 
+            name="gender"
+            value={formData.gender} onChange={handleInputChange} 
             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             >
-              <option value="" className="text-gray-900">Choose Gender</option>
-              <option value="male" className="text-gray-900">Male</option>
-              <option value="female" className="text-gray-900">Female</option>
-              <option value="other" className="text-gray-900">Other</option>
+              <option value="" className="text-gray-900" >Choose Gender</option>
+              <option value="male" className="text-gray-900" name="gender">Male</option>
+              <option value="female" className="text-gray-900" name="gender">Female</option>
+              <option value="other" className="text-gray-900" name="gender">Other</option>
             </select>
             <label
               for="floating_email"
@@ -178,20 +234,20 @@ const apply = () => {
             </label>
           </div>
           <div class="relative z-0 w-full mb-5 group">
-            <select name="floating_purpose" id=""
+            <select name="loanPurpose" value={formData.loanPurpose} onChange={handleInputChange}
             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             >
               <option value="" className="text-gray-900">Choose Loan Purpose</option>
-              <option value="education" className="text-gray-900">Education</option>
-              <option value="home" className="text-gray-900">Home</option>
-              <option value="personal" className="text-gray-900">Personal</option>
-              <option value="business" className="text-gray-900">Business</option>
-              <option value="other" className="text-gray-900">Gold</option>
-              <option value="other" className="text-gray-900">Car</option>
-              <option value="other" className="text-gray-900">LRD</option>
-              <option value="other" className="text-gray-900">Machiniry</option>
-              <option value="other" className="text-gray-900">Equipement</option>
-              <option value="other" className="text-gray-900">Other</option>
+              <option value="education" className="text-gray-900"name="loanPurpose">Education</option>
+              <option value="home" className="text-gray-900"name="loanPurpose">Home</option>
+              <option value="personal" className="text-gray-900"name="loanPurpose">Personal</option>
+              <option value="business" className="text-gray-900"name="loanPurpose">Business</option>
+              <option value="other" className="text-gray-900"name="loanPurpose">Gold</option>
+              <option value="other" className="text-gray-900"name="loanPurpose">Car</option>
+              <option value="other" className="text-gray-900"name="loanPurpose">LRD</option>
+              <option value="other" className="text-gray-900"name="loanPurpose">Machiniry</option>
+              <option value="other" className="text-gray-900"name="loanPurpose">Equipement</option>
+              <option value="other" className="text-gray-900"name="loanPurpose">Other</option>
             </select>
             <label
               for="floating_purpose"
