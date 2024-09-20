@@ -1,33 +1,55 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { useAuth } from "./AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const Admin = () => {
-  const [formData, setFormData] = useState({
-    username: "",
-    password: ""
-  });
-  const navigate = useNavigate(); // Initialize the navigate function
+  const { login } = useAuth();
+  const [formData, setFormData] = useState({ username: "", password: "" });
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const { username, password } = formData;
 
-    fetch("http://localhost:5000/admin", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((response) => response.json())
-      alert("Login successful")
+    // Basic validation
+    if (!username || !password) {
+      setError("Please fill in both fields.");
+      return;
+    }
+
+    setError(""); // Clear previous errors
+    setLoading(true); // Start loading
+
+    try {
+      const response = await fetch("http://localhost:5000/admin", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        setError("Invalid credentials");
+        setLoading(false);
+        return;
+      }
+
+      const data = await response.json();
+      login(data.token); 
+      alert("Login successful");
+      navigate("/dashboard"); 
+    } catch (error) {
+      console.error("Error during login:", error);
+      setError("An error occurred during login.");
+    } finally {
+      setLoading(false); // End loading
+    }
   };
 
   return (
@@ -35,6 +57,7 @@ const Admin = () => {
       <h1 className="text-4xl text-center text-violet-400 mt-5">Admin</h1>
       <div>
         <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
+          {error && <p className="text-red-500 mb-5">{error}</p>} {/* Display error if exists */}
           <div className="mb-5">
             <label
               htmlFor="username"
@@ -45,7 +68,7 @@ const Admin = () => {
             <input
               type="text"
               id="username"
-              name="username" // Add name attribute for input handling
+              name="username" 
               onChange={handleInputChange}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               required
@@ -61,7 +84,7 @@ const Admin = () => {
             <input
               type="password"
               id="password"
-              name="password" // Add name attribute for input handling
+              name="password" 
               onChange={handleInputChange}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               required
@@ -71,8 +94,9 @@ const Admin = () => {
           <button
             type="submit"
             className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            disabled={loading} // Disable button while loading
           >
-            Submit
+            {loading ? "Logging in..." : "Submit"}
           </button>
         </form>
       </div>

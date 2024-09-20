@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { useAuth } from "./AuthContext"
 
 const AdminDashboard = () => {
+  const { user } = useAuth();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -10,11 +12,15 @@ const AdminDashboard = () => {
     try {
       const response = await fetch("http://localhost:5000/getdata", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(s),
+        headers: { 
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${user.token}`, // Send token with request
+        },
       });
 
-      if (!response.ok) throw new Error("Network response was not ok");
+      if (!response.ok) {
+        throw new Error("Failed to fetch data");
+      }
 
       const result = await response.json();
       setData(result);
@@ -25,24 +31,14 @@ const AdminDashboard = () => {
     }
   };
 
-  const handleDelete = async (index) => {
-    try {
-      const response = await fetch(`http://localhost:5000/delete/${index}`, {
-        method: "DELETE",
-      });
-
-      if (!response.ok) throw new Error("Failed to delete item");
-
-      // Remove the deleted item from the local state after deletion
-      setData(data.filter((_, i) => i !== index));
-    } catch (error) {
-      console.error("Error deleting item:", error);
-    }
-  };
-
   useEffect(() => {
-    fetchData();
-  }, []);
+    if (user) {
+      fetchData();
+    }
+  }, [user]);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
     <div>
@@ -67,8 +63,8 @@ const AdminDashboard = () => {
               </tr>
             </thead>
             <tbody>
-              {data.map((item, index) => (
-                <tr key={index} className="bg-gray-800">
+              {data.map((item) => (
+                <tr key={item.id} className="bg-gray-800">
                   <td className="border border-gray-600 px-4 py-2">{item.firstName}</td>
                   <td className="border border-gray-600 px-4 py-2">{item.lastName}</td>
                   <td className="border border-gray-600 px-4 py-2">{item.email}</td>
@@ -78,7 +74,7 @@ const AdminDashboard = () => {
                   <td className="border border-gray-600 px-4 py-2">{item.loanPurpose}</td>
                   <td className="border border-gray-600 px-4 py-2">
                     <button
-                      onClick={() => handleDelete(index)}
+                      onClick={() => handleDelete(item.id)} // Use the unique ID for deletion
                       className="bg-red-500 text-white px-3 py-1 rounded"
                     >
                       Delete
