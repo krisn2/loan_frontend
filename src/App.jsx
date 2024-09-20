@@ -6,6 +6,7 @@ import Contact from "./component/contect";
 import Loans from "./component/loans";
 import Apply from "./component/Apply";
 import Footer from "./component/footer";
+import Admin from "./component/admin";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
             <Route path="/loans" element={<Loans />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/apply" element={<Apply />} />
+            <Route path="/admin" element={<Admin/>} />
           </Routes>
         </div>
 
