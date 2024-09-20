@@ -7,6 +7,7 @@ import Loans from "./component/loans";
 import Apply from "./component/Apply";
 import Footer from "./component/footer";
 import Admin from "./component/admin";
+import Dashboard from "./component/adminDashbord";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
             <Route path="/contact" element={<Contact />} />
             <Route path="/apply" element={<Apply />} />
             <Route path="/admin" element={<Admin/>} />
+            <Route path="/dashboard" element={<Dashboard/>} />
           </Routes>
         </div>
 

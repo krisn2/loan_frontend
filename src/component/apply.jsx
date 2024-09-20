@@ -282,7 +282,7 @@ const apply = () => {
                 Business
               </option>
               <option
-                value="other"
+                value="Gold"
                 className="text-gray-900"
                 name="loanPurpose"
               >
@@ -296,21 +296,21 @@ const apply = () => {
                 Car
               </option>
               <option
-                value="other"
+                value="Car"
                 className="text-gray-900"
                 name="loanPurpose"
               >
                 LRD
               </option>
               <option
-                value="other"
+                value="LRD"
                 className="text-gray-900"
                 name="loanPurpose"
               >
                 Machiniry
               </option>
               <option
-                value="other"
+                value="Equipement"
                 className="text-gray-900"
                 name="loanPurpose"
               >
