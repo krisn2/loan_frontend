@@ -289,28 +289,28 @@ const apply = () => {
                 Gold
               </option>
               <option
-                value="other"
+                value="car"
                 className="text-gray-900"
                 name="loanPurpose"
               >
                 Car
               </option>
               <option
-                value="Car"
+                value="LRD"
                 className="text-gray-900"
                 name="loanPurpose"
               >
                 LRD
               </option>
               <option
-                value="LRD"
+                value="machiniry"
                 className="text-gray-900"
                 name="loanPurpose"
               >
                 Machiniry
               </option>
               <option
-                value="Equipement"
+                value="equipement"
                 className="text-gray-900"
                 name="loanPurpose"
               >
