@@ -43,7 +43,7 @@ const AdminDashboard = () => {
         throw new Error("Failed to download file");
       }
 
-      const blob = await response.blob(); // Get the file as a blob
+      const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
@@ -54,6 +54,23 @@ const AdminDashboard = () => {
       window.URL.revokeObjectURL(url); // Clean up the URL object
     } catch (error) {
       setError(error.message);
+    }
+  };
+  const handleDelete = async (index) => {
+    try {
+      const response = await fetch(`http://localhost:5000/delete/${index}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${user.token}`, // Include the token if necessary
+        },
+      });
+
+      if (!response.ok) throw new Error("Failed to delete item");
+
+      // Remove the deleted item from the local state after deletion
+      setData(data.filter((_, i) => i !== index));
+    } catch (error) {
+      console.error("Error deleting item:", error);
     }
   };
 
@@ -74,9 +91,9 @@ const AdminDashboard = () => {
       <div className="mt-5 flex justify-center bg-black text-white text-center p-5">
         <button
           onClick={handleDownload}
-          class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800"
+          className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800"
         >
-          <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+          <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
             Download
           </span>
         </button>
@@ -90,6 +107,9 @@ const AdminDashboard = () => {
                 <th className="border border-gray-600 px-4 py-2">
                   Loan Amount
                 </th>
+                <th className="border border-gray-600 px-4 py-2">
+                  Monthly Income
+                </th>
                 <th className="border border-gray-600 px-4 py-2">Address</th>
                 <th className="border border-gray-600 px-4 py-2">Phone</th>
                 <th className="border border-gray-600 px-4 py-2">
@@ -99,8 +119,8 @@ const AdminDashboard = () => {
               </tr>
             </thead>
             <tbody>
-              {data.map((item) => (
-                <tr key={item.id} className="bg-gray-800">
+              {data.map((item, index) => (
+                <tr key={index} className="bg-gray-800">
                   <td className="border border-gray-600 px-4 py-2">
                     {item.firstName}
                   </td>
@@ -114,6 +134,9 @@ const AdminDashboard = () => {
                     {item.loanAmount}
                   </td>
                   <td className="border border-gray-600 px-4 py-2">
+                    {item.income}
+                  </td>
+                  <td className="border border-gray-600 px-4 py-2">
                     {item.address}
                   </td>
                   <td className="border border-gray-600 px-4 py-2">
@@ -124,7 +147,10 @@ const AdminDashboard = () => {
                   </td>
                   <td className="border border-gray-600 px-4 py-2">
                     <button
-                      onClick={() => handleDelete(item.id)} // Use the unique ID for deletion
+                      onClick={() => {
+                        console.log("Item to delete:", item); // Log the whole item
+                        handleDelete(index); // Pass the index here
+                      }}
                       className="bg-red-500 text-white px-3 py-1 rounded"
                     >
                       Delete
