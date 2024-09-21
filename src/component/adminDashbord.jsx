@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "./AuthContext";
+const url = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
 const AdminDashboard = () => {
   const { user } = useAuth();
@@ -9,7 +10,7 @@ const AdminDashboard = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch("http://localhost:5000/getdata", {
+      const response = await fetch(`${url}/getdata`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -32,7 +33,7 @@ const AdminDashboard = () => {
 
   const handleDownload = async () => {
     try {
-      const response = await fetch("http://localhost:5000/download", {
+      const response = await fetch(`${url}/download`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${user.token}`, // Send token with request
@@ -58,7 +59,7 @@ const AdminDashboard = () => {
   };
   const handleDelete = async (index) => {
     try {
-      const response = await fetch(`http://localhost:5000/delete/${index}`, {
+      const response = await fetch(`${url}/delete/${index}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${user.token}`, // Include the token if necessary

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useAuth } from "./AuthContext";
 import { useNavigate } from "react-router-dom";
+const url = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
 const Admin = () => {
   const { login } = useAuth();
@@ -28,7 +29,7 @@ const Admin = () => {
     setLoading(true); // Start loading
 
     try {
-      const response = await fetch("http://localhost:5000/admin", {
+      const response = await fetch(`${url}/admin`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
